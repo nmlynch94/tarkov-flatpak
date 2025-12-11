@@ -17,7 +17,7 @@ if [[ ! -f "$tarkov_launcher_exe_path" ]]; then
   # Install dotnet48 and launch
   # TODO mouse focus registry key
   # Use umu-latest to install deps because dotnet48 is broken in proton 10+
-  PROTONPATH="UMU-Latest" umu-run winetricks -q dotnet48 vcrun2022
+  PROTONPATH="UMU-Latest" umu-run winetricks -q dotnet48 vcrun2022 || echo "already installed"
   curl -o "$tarkov_installer_name" -L "$TARKOV_LAUNCHER_URL"
 
   #BE workaround
@@ -50,18 +50,18 @@ if [[ ! -f "$tarkov_launcher_exe_path" ]]; then
   umu-run reg add "$SERVICE_KEY" /v Type /t REG_DWORD /d 16 /f
   umu-run reg add "$SERVICE_KEY" /v WOW64 /t REG_DWORD /d 1 /f
 
+  curl -o "dotnet-runtime.exe" -L https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/9.0.11/windowsdesktop-runtime-9.0.11-win-x64.exe
+  curl -o "aspnet-core.exe" -L https://builds.dotnet.microsoft.com/dotnet/aspnetcore/Runtime/9.0.11/aspnetcore-runtime-9.0.11-win-x64.exe
   umu-run dotnet-runtime.exe /q
   umu-run aspnet-core.exe /q
   # umu-run reg add "HKEY_CURRENT_USER\Software\Wine\X11 Driver" /v UseTakeFocus /t REG_DWORD /s "N" /f
   # SPT Installer run
   mkdir -p "$WINEPREFIX/drive_c/SPT"
   PROTONPATH="UMU-Latest" umu-run winetricks -q arial times dotnetdesktop6 dotnetdesktop8 dotnetdesktop9
-  curl -o "dotnet-runtime.exe" -L https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/9.0.11/windowsdesktop-runtime-9.0.11-win-x64.exe
-  curl -o "aspnet-core.exe" -L https://builds.dotnet.microsoft.com/dotnet/aspnetcore/Runtime/9.0.11/aspnetcore-runtime-9.0.11-win-x64.exe
+  curl -o "SPTInstaller.exe" -L https://ligma.waffle-lord.net/SPTInstaller.exe
   umu-run "SPTInstaller.exe" installpath="C:\SPT"
   chmod +x "$WINEPREFIX/drive_c/SPT/SPT/SPT.Server.Linux"
   umu-run winecfg /v win81
-
 
   exit 0
 else
