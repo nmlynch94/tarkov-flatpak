@@ -11,10 +11,12 @@ separate-locales: false
 sdk-extensions:
   - org.freedesktop.Sdk.Compat.i386
   - org.freedesktop.Sdk.Extension.toolchain-i386
+  - org.freedesktop.Sdk.Extension.dotnet9
 finish-args:
 # pressure vessel
   - --device=all
   - --env=PATH=/app/bin:/app/utils/bin:/usr/bin:/usr/lib/extensions/vulkan/MangoHud/bin:/usr/lib/extensions/vulkan/gamescope/bin:/usr/lib/extensions/vulkan/OBSVkCapture/bin:/app/bin/heroic/resources/app.asar.unpacked/build/bin/linux
+  - --env=DOTNET_ROOT=/app/lib/dotnet
   - --env=LD_LIBRARY_PATH=/usr/lib/extensions/vulkan/gamescope/lib
   - --persist=Games
   - --persist=.local
@@ -109,6 +111,11 @@ modules:
           /app/lib32
           /app/lib/i386-linux-gnu
           /lib64
+
+  - name: dotnet-runtime
+    buildsystem: simple
+    build-commands:
+      - /usr/lib/sdk/dotnet9/bin/install.sh
 
   # These are needed for window management inside gamescope
   - name: python-flit-core # needed by idna
