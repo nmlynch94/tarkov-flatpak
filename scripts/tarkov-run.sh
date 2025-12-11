@@ -12,7 +12,7 @@ tarkov_installer_name="tarkov-setup.exe"
 
 tarkov_launcher_exe_path="$WINEPREFIX/drive_c/Battlestate Games/BsgLauncher/BsgLauncher.exe"
 
-if [[ ! -f "$tarkov_launcher_exe_path" ]]; then
+if [[ ! -d "$WINEPREFIX/drive_c/SPT/SPT" ]]; then
   echo "Tarkov launcher not installed. Installing..."
   # Install dotnet48 and launch
   # TODO mouse focus registry key
