@@ -16,13 +16,13 @@ if [[ ! -f "$tarkov_launcher_exe_path" ]]; then
   echo "Tarkov launcher not installed. Installing..."
   # Install dotnet48 and launch
   # TODO mouse focus registry key
-  # umu-run winetricks -q dotnet48 vcrun2022
+  umu-run winetricks -q dotnet48 vcrun2022
   curl -o "$tarkov_installer_name" -L "$TARKOV_LAUNCHER_URL"
 
   #BE workaround
   if zenity --question \
       --title="Info" \
-      --text="In the next step, install the game. If it says to update that, click it. Click update if applicable until no more updates are available, and then close the launcher. Click yes to continue, or click no to abort."; then
+      --text="In the next step, install the game. If it says to update after it completes, update. Click update if applicable until no more updates are available, and then close the launcher. Click yes to continue, or click no to abort."; then
     echo "Continuing..."
   else
     exit 0
