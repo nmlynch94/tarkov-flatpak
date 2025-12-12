@@ -52,12 +52,12 @@ if [[ ! -d "$WINEPREFIX/drive_c/SPT/SPT" ]]; then
 
   curl -o "dotnet-runtime.exe" -L https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/9.0.11/windowsdesktop-runtime-9.0.11-win-x64.exe
   curl -o "aspnet-core.exe" -L https://builds.dotnet.microsoft.com/dotnet/aspnetcore/Runtime/9.0.11/aspnetcore-runtime-9.0.11-win-x64.exe
-  umu-run dotnet-runtime.exe /q
-  umu-run aspnet-core.exe /q
+  umu-run dotnet-runtime.exe /q || echo "continue"
+  umu-run aspnet-core.exe /q || echo "continue"
   # umu-run reg add "HKEY_CURRENT_USER\Software\Wine\X11 Driver" /v UseTakeFocus /t REG_DWORD /s "N" /f
   # SPT Installer run
   mkdir -p "$WINEPREFIX/drive_c/SPT"
-  PROTONPATH="UMU-Latest" umu-run winetricks -q arial times dotnetdesktop6 dotnetdesktop8 dotnetdesktop9
+  PROTONPATH="UMU-Latest" umu-run winetricks -q arial times dotnetdesktop6 dotnetdesktop8 dotnetdesktop9 || echo "Already installed"
   curl -o "SPTInstaller.exe" -L https://ligma.waffle-lord.net/SPTInstaller.exe
   umu-run "SPTInstaller.exe" installpath="C:\SPT"
   chmod +x "$WINEPREFIX/drive_c/SPT/SPT/SPT.Server.Linux"
