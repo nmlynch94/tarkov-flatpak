@@ -1,3 +1,6 @@
+
+### Installation Instructions
+Copy and paste the following into your terminal:
 ```
 HAS_NVIDIA=0
 FREEDESKTOP_VERSION="24.08"
