@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
-<id>com.eveonline.EveOnline.desktop</id>
-<name>EVE Online</name>
-<developer_name>CCP</developer_name>
-<summary>A launcher to access Jagex games seamlessly and securely</summary>
+<id>com.tarkov.Tarkov</id>
+<launchable type="desktop-id">com.tarkov.Tarkov.desktop</launchable>
+<name>Escape from Tarkov</name>
+<developer_name>BSG</developer_name>
+<summary>Tarkov</summary>
 <description>
     <p>
-      The Jagex Launcher offers a new and improved experience for RuneScape and beyond. It allows you to access Jagex games seamlessly and securely, all in one place and with the safety and convenience of a single login.
+            Tarkov
     </p>
 </description>
 <metadata_license>CC0-1.0</metadata_license>
-<project_license>LicenseRef-proprietary=https://www.jagex.com/en-GB/terms/eula</project_license>
+<project_license></project_license>
 <url type="homepage">https://www.jagex.com</url>
 <categories>
     <category>Game</category>
 </categories>
 <screenshots>
-    <screenshot type="default">https://www.jagex.com/images/launcher-preview-large-rs-202309.jpg</screenshot>
 </screenshots>
 <releases>
   <release version="8" date="2022-07-15"/>
