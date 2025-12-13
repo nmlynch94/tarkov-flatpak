@@ -2,14 +2,15 @@
 ### Installation Instructions
 Copy and paste the following into your terminal:
 ```
+flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak install -y --user org.flatpak.Builder
+
 HAS_NVIDIA=0
 FREEDESKTOP_VERSION="24.08"
 if [[ -f /proc/driver/nvidia/version ]]; then
     HAS_NVIDIA=1
     NVIDIA_VERSION=$(cat /proc/driver/nvidia/version | grep "NVRM version" | grep -oE '[0-9]{3,4}\.[0-9]{1,4}[\.0-9]+\s' | sed 's/\./-/g' | sed 's/ //g')
 fi
-
-flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 # https://github.com/flatpak/flatpak/issues/3094
 flatpak install --user -y --noninteractive flathub \
