@@ -4,6 +4,8 @@ Copy and paste the following into your terminal:
 ```
 flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install -y --user org.flatpak.Builder
+git clone https://github.com/nmlynch94/tarkov-flatpak.git
+cd tarkov-flatpak
 
 HAS_NVIDIA=0
 FREEDESKTOP_VERSION="24.08"
